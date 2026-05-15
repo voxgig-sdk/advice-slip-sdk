@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Advice Slip API"
+        url: "https://api.adviceslip.com/"
+      }
+      description: "The Advice Slip JSON API is provided for free. It provides random advice slips, advice by ID, and searching advice functionalities. Includes objects for slip, search, and message."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.adviceslip.com"
+        }
+      ]
+      title: "Advice Slip API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

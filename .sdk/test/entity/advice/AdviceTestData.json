@@ -1,0 +1,22 @@
+{
+  "existing": {
+    "advice": {
+      "ADVICE00": {
+        "slip": {}
+      },
+      "ADVICE01": {
+        "slip": {}
+      },
+      "ADVICE02": {
+        "slip": {}
+      }
+    }
+  },
+  "new": {
+    "advice": {
+      "advice_ref01": {
+        "slip": {}
+      }
+    }
+  }
+}

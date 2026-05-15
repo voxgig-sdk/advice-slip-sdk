@@ -1,0 +1,96 @@
+# Entity: advice
+
+main: kit: entity: advice: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "slip"
+      req: true
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "advice"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "slip_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/advice/{slip_id}"
+          parts: [
+            "advice"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              slip_id: "id"
+            }
+          }
+          select: {
+            exist: [
+              "callback"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/advice"
+          parts: [
+            "advice"
+          ]
+          select: {
+            exist: [
+              "callback"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

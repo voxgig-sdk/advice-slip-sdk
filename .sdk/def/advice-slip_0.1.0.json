@@ -1,0 +1,319 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Advice Slip API",
+    "description": "The Advice Slip JSON API is provided for free. It provides random advice slips, advice by ID, and searching advice functionalities. Includes objects for slip, search, and message.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Advice Slip API",
+      "url": "https://api.adviceslip.com/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.adviceslip.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/advice": {
+      "get": {
+        "summary": "Get random advice",
+        "description": "Returns a random advice slip as a slip object. Note: Advice is cached for 2 seconds. Any repeat-request within 2 seconds will return the same piece of advice.",
+        "operationId": "getRandomAdvice",
+        "tags": [
+          "Advice"
+        ],
+        "parameters": [
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "To define your own callback function name and return the JSON in a function wrapper (as JSONP), add the parameter callback with your desired name as the value.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with random advice slip",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "slip": {
+                      "$ref": "#/components/schemas/Slip"
+                    }
+                  }
+                },
+                "example": {
+                  "slip": {
+                    "slip_id": 2,
+                    "advice": "Smile and the world smiles with you. Frown and you're on your own."
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/advice/{slip_id}": {
+      "get": {
+        "summary": "Get advice by ID",
+        "description": "If an advice slip is found with the corresponding slip_id, a slip object is returned.",
+        "operationId": "getAdviceById",
+        "tags": [
+          "Advice"
+        ],
+        "parameters": [
+          {
+            "name": "slip_id",
+            "in": "path",
+            "description": "The unique ID of the advice slip to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "To define your own callback function name and return the JSON in a function wrapper (as JSONP), add the parameter callback with your desired name as the value.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with advice slip",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "slip": {
+                      "$ref": "#/components/schemas/Slip"
+                    }
+                  }
+                },
+                "example": {
+                  "slip": {
+                    "slip_id": 2,
+                    "advice": "Smile and the world smiles with you. Frown and you're on your own."
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Advice slip not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                },
+                "example": {
+                  "message": {
+                    "type": "notice",
+                    "text": "Advice slip not found."
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/advice/search/{query}": {
+      "get": {
+        "summary": "Search advice",
+        "description": "If an advice slip is found, containing the corresponding search term in query, an array of slip objects is returned inside a search object.",
+        "operationId": "searchAdvice",
+        "tags": [
+          "Advice"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "path",
+            "description": "The search term to find in advice slips",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "callback",
+            "in": "query",
+            "description": "To define your own callback function name and return the JSON in a function wrapper (as JSONP), add the parameter callback with your desired name as the value.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Search"
+                },
+                "example": {
+                  "total_results": "2",
+                  "query": "spiders",
+                  "slips": [
+                    {
+                      "slip_id": 123,
+                      "advice": "Remember that spiders are more afraid of you, than you are of them."
+                    },
+                    {
+                      "slip_id": 2,
+                      "advice": "Smile and the world smiles with you. Frown and you're on your own."
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No advice slips found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Slip": {
+        "type": "object",
+        "description": "A slip object is a simple piece of advice.",
+        "properties": {
+          "slip_id": {
+            "type": "integer",
+            "description": "The unique ID of this advice slip.",
+            "example": 2
+          },
+          "advice": {
+            "type": "string",
+            "description": "The advice being given.",
+            "example": "Smile and the world smiles with you. Frown and you're on your own."
+          }
+        },
+        "required": [
+          "slip_id",
+          "advice"
+        ]
+      },
+      "Search": {
+        "type": "object",
+        "description": "A search object contains the results of a slip search query.",
+        "properties": {
+          "total_results": {
+            "type": "string",
+            "description": "Total number of matching advice slips found.",
+            "example": "2"
+          },
+          "query": {
+            "type": "string",
+            "description": "The search query provided.",
+            "example": "spiders"
+          },
+          "slips": {
+            "type": "array",
+            "description": "An array of slip objects matching the search query.",
+            "items": {
+              "$ref": "#/components/schemas/Slip"
+            }
+          }
+        },
+        "required": [
+          "total_results",
+          "slips"
+        ]
+      },
+      "Message": {
+        "type": "object",
+        "description": "A message object contains information about the status of the requested API URL.",
+        "properties": {
+          "message": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The type of message. Can be either notice, warning or error.",
+                "enum": [
+                  "notice",
+                  "warning",
+                  "error"
+                ],
+                "example": "notice"
+              },
+              "text": {
+                "type": "string",
+                "description": "The message being received.",
+                "example": "Advice slip not found."
+              }
+            },
+            "required": [
+              "type",
+              "text"
+            ]
+          }
+        },
+        "required": [
+          "message"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Advice",
+      "description": "Operations related to advice slips"
+    }
+  ]
+}

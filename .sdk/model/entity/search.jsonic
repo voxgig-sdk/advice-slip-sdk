@@ -1,0 +1,80 @@
+# Entity: search
+
+main: kit: entity: search: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "query"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "slip"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "total_result"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "search"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "query"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "callback"
+                orig: "callback"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/advice/search/{query}"
+          parts: [
+            "advice"
+            "search"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              query: "id"
+            }
+          }
+          select: {
+            exist: [
+              "callback"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

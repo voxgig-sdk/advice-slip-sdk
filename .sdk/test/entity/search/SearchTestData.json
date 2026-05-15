@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "search": {
+      "SEARCH00": {
+        "query": "s1e",
+        "slip": [],
+        "total_result": "s20"
+      },
+      "SEARCH01": {
+        "query": "s3c",
+        "slip": [],
+        "total_result": "s3e"
+      },
+      "SEARCH02": {
+        "query": "s5a",
+        "slip": [],
+        "total_result": "s5c"
+      }
+    }
+  },
+  "new": {
+    "search": {
+      "search_ref01": {
+        "query": "s78",
+        "slip": [],
+        "total_result": "s7a"
+      }
+    }
+  }
+}
