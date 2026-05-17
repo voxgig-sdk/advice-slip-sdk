@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/advice-slip-sdk/core"
+import "github.com/voxgig-sdk/advice-slip-sdk/go/core"
 
 func init() {
 	core.UtilityRegistrar = registerAll

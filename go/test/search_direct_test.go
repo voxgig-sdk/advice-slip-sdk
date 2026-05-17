@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/advice-slip-sdk"
-	"github.com/voxgig-sdk/advice-slip-sdk/core"
+	sdk "github.com/voxgig-sdk/advice-slip-sdk/go"
+	"github.com/voxgig-sdk/advice-slip-sdk/go/core"
 )
 
 func TestSearchDirect(t *testing.T) {

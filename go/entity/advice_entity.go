@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/advice-slip-sdk/core"
+	"github.com/voxgig-sdk/advice-slip-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/advice-slip-sdk/go/utility/struct"
 )
 
 type AdviceEntity struct {

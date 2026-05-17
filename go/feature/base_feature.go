@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/advice-slip-sdk/core"
+	"github.com/voxgig-sdk/advice-slip-sdk/go/core"
 )
 
 type BaseFeature struct {

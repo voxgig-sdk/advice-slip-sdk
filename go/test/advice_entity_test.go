@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/advice-slip-sdk"
-	"github.com/voxgig-sdk/advice-slip-sdk/core"
+	sdk "github.com/voxgig-sdk/advice-slip-sdk/go"
+	"github.com/voxgig-sdk/advice-slip-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/advice-slip-sdk/go/utility/struct"
 )
 
 func TestAdviceEntity(t *testing.T) {

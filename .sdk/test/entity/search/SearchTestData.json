@@ -4,17 +4,20 @@
       "SEARCH00": {
         "query": "s1e",
         "slip": [],
-        "total_result": "s20"
+        "total_result": "s20",
+        "id": "SEARCH00"
       },
       "SEARCH01": {
         "query": "s3c",
         "slip": [],
-        "total_result": "s3e"
+        "total_result": "s3e",
+        "id": "SEARCH01"
       },
       "SEARCH02": {
         "query": "s5a",
         "slip": [],
-        "total_result": "s5c"
+        "total_result": "s5c",
+        "id": "SEARCH02"
       }
     }
   },

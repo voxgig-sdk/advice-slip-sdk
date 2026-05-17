@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/advice-slip-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/advice-slip-sdk/core"
+	"github.com/voxgig-sdk/advice-slip-sdk/go/core"
 )
 
 func transformResponseUtil(ctx *core.Context) any {
