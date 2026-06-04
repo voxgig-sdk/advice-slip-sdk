@@ -77,14 +77,12 @@ function search_direct_setup($mockres)
     $env = Runner::env_override([
         "ADVICESLIP_TEST_SEARCH_ENTID" => [],
         "ADVICESLIP_TEST_LIVE" => "FALSE",
-        "ADVICESLIP_APIKEY" => "NONE",
     ]);
 
     $live = $env["ADVICESLIP_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["ADVICESLIP_APIKEY"],
         ];
         $client = new AdviceSlipSDK($merged_opts);
         return [

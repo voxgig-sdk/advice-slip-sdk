@@ -85,7 +85,6 @@ function advice_basic_setup($extra)
         "ADVICESLIP_TEST_ADVICE_ENTID" => $idmap,
         "ADVICESLIP_TEST_LIVE" => "FALSE",
         "ADVICESLIP_TEST_EXPLAIN" => "FALSE",
-        "ADVICESLIP_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +96,6 @@ function advice_basic_setup($extra)
     if ($env["ADVICESLIP_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ADVICESLIP_APIKEY"],
             ],
             $extra ?? [],
         ]);
