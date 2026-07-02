@@ -71,12 +71,14 @@ def advice_direct_setup(mockres)
   env = Runner.env_override({
     "ADVICESLIP_TEST_ADVICE_ENTID" => {},
     "ADVICESLIP_TEST_LIVE" => "FALSE",
+    "ADVICESLIP_APIKEY" => "NONE",
   })
 
   live = env["ADVICESLIP_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["ADVICESLIP_APIKEY"],
     }
     client = AdviceSlipSDK.new(merged_opts)
     return {

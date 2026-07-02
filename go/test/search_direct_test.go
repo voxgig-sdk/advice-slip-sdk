@@ -117,12 +117,14 @@ func searchDirectSetup(mockres any) *searchDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ADVICESLIP_TEST_SEARCH_ENTID": map[string]any{},
 		"ADVICESLIP_TEST_LIVE":    "FALSE",
+		"ADVICESLIP_APIKEY":       "NONE",
 	})
 
 	live := env["ADVICESLIP_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["ADVICESLIP_APIKEY"],
 		}
 		client := sdk.NewAdviceSlipSDK(mergedOpts)
 

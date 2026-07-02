@@ -1,6 +1,11 @@
 # AdviceSlip Ruby SDK
 
-The Ruby SDK for the AdviceSlip API. Provides an entity-oriented interface using idiomatic Ruby conventions.
+
+
+The Ruby SDK for the AdviceSlip API — an entity-oriented client using idiomatic Ruby conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -31,13 +36,15 @@ loading a specific record.
 ```ruby
 require_relative "AdviceSlip_sdk"
 
-client = AdviceSlipSDK.new({})
+client = AdviceSlipSDK.new({
+  "apikey" => ENV["ADVICE-SLIP_APIKEY"],
+})
 ```
 
 ### 3. Load a advice
 
 ```ruby
-result, err = client.Advice(nil).load({ "id" => "example_id" }, nil)
+result, err = client.Advice().load({ "id" => "example_id" })
 raise err if err
 puts result
 ```
@@ -83,11 +90,9 @@ puts fetchdef["headers"]
 Create a mock client for unit testing — no server required:
 
 ```ruby
-client = AdviceSlipSDK.test(nil, nil)
+client = AdviceSlipSDK.test
 
-result, err = client.AdviceSlip(nil).load(
-  { "id" => "test01" }, nil
-)
+result, err = client.AdviceSlip().load({ "id" => "test01" })
 # result contains mock response data
 ```
 
@@ -119,6 +124,7 @@ Create a `.env.local` file at the project root:
 
 ```
 ADVICE-SLIP_TEST_LIVE=TRUE
+ADVICE-SLIP_APIKEY=<your-key>
 ```
 
 Then run:
@@ -141,6 +147,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

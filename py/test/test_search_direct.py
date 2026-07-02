@@ -69,12 +69,14 @@ def _search_direct_setup(mockres):
     env = runner.env_override({
         "ADVICESLIP_TEST_SEARCH_ENTID": {},
         "ADVICESLIP_TEST_LIVE": "FALSE",
+        "ADVICESLIP_APIKEY": "NONE",
     })
 
     live = env.get("ADVICESLIP_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("ADVICESLIP_APIKEY"),
         }
         client = AdviceSlipSDK(merged_opts)
         return {

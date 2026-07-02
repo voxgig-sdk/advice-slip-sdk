@@ -91,6 +91,7 @@ def _search_basic_setup(extra):
         "ADVICESLIP_TEST_SEARCH_ENTID": idmap,
         "ADVICESLIP_TEST_LIVE": "FALSE",
         "ADVICESLIP_TEST_EXPLAIN": "FALSE",
+        "ADVICESLIP_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _search_basic_setup(extra):
     if env.get("ADVICESLIP_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("ADVICESLIP_APIKEY"),
             },
             extra or {},
         ])

@@ -111,6 +111,7 @@ function basicSetup(extra?: any) {
     'ADVICE_SLIP_TEST_SEARCH_ENTID': idmap,
     'ADVICE_SLIP_TEST_LIVE': 'FALSE',
     'ADVICE_SLIP_TEST_EXPLAIN': 'FALSE',
+    'ADVICE_SLIP_APIKEY': 'NONE',
   })
 
   idmap = env['ADVICE_SLIP_TEST_SEARCH_ENTID']
@@ -120,6 +121,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new AdviceSlipSDK(merge([
       {
+        apikey: env.ADVICE_SLIP_APIKEY,
       },
       extra
     ]))

@@ -91,6 +91,7 @@ function advice_basic_setup(extra)
     ["ADVICESLIP_TEST_ADVICE_ENTID"] = idmap,
     ["ADVICESLIP_TEST_LIVE"] = "FALSE",
     ["ADVICESLIP_TEST_EXPLAIN"] = "FALSE",
+    ["ADVICESLIP_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function advice_basic_setup(extra)
   if env["ADVICESLIP_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["ADVICESLIP_APIKEY"],
       },
       extra or {},
     })

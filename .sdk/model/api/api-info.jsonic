@@ -17,30 +17,7 @@ main: {
       ]
       title: "Advice Slip API"
       version: "1.0.0"
-      tagline: "Random advice slips, lookup by ID, and keyword search from the long-running Advice Slip JSON API"
-      homepage: "https://api.adviceslip.com/"
-      docs_url: "https://api.adviceslip.com/"
-      license_short: "No explicit licence stated; free public API operated by Tom Kiss."
-      license_md: `- The Advice Slip JSON API is provided free of charge by its operator, Tom Kiss (© 2013–2026).
-- No explicit licence or attribution terms are published on the API homepage — review the homepage before redistributing content.
-- The operator accepts voluntary support via [Ko-fi](https://ko-fi.com/tomkiss).`
-      about_md: `The [Advice Slip JSON API](https://api.adviceslip.com/) is a free public API run by Tom Kiss that serves short pieces of advice ("slips") as JSON. According to the homepage it "currently gives out over 10 million pieces of advice every year."
-
-What you get from the API:
-
-- \`GET /advice\` — a random advice slip.
-- \`GET /advice/{slip_id}\` — a specific slip by numeric ID.
-- \`GET /advice/search/{query}\` — keyword search across slips.
-- A \`daily_adviceslip.rss\` feed that "provides a single piece of advice, chosen at random daily".
-
-Responses are built from three documented objects: a **slip** (\`slip_id\`, \`advice\`), a **search** result (\`total_results\`, \`query\`, \`slips\`), and a **message** (\`type\`, \`text\`) used for notices, warnings and errors.
-
-Operational notes: no authentication is required, and the API supports JSONP via an optional \`callback\` parameter. The homepage notes that "Advice is cached for 2 seconds. Any repeat-request within 2 seconds will return the same piece of advice."`
-      entity_desc: {
-        advice: "Individual advice slips — fetch a random slip via `GET /advice` or a specific one via `GET /advice/{slip_id}`, each returned as a slip object with `slip_id` and `advice`."
-        search: "Keyword search over the advice corpus via `GET /advice/search/{query}`, returning a search object with `total_results`, the `query`, and a `slips` array."
-      }
-      auth: false
     }
   }
 }
+
