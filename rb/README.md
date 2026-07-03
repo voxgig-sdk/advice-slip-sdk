@@ -10,13 +10,13 @@ The Ruby SDK for the AdviceSlip API — an entity-oriented client using idiomati
 
 ## Install
 ```bash
-gem install advice-slip-sdk
+gem install voxgig-sdk-advice-slip
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "advice-slip-sdk"
+gem "voxgig-sdk-advice-slip"
 ```
 
 Then run:
