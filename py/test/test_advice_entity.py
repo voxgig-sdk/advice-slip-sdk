@@ -49,8 +49,7 @@ class TestAdviceEntity:
         # LOAD
         advice_ref01_ent = client.Advice(None)
         advice_ref01_match_dt0 = {}
-        advice_ref01_data_dt0_loaded, err = advice_ref01_ent.load(advice_ref01_match_dt0, None)
-        assert err is None
+        advice_ref01_data_dt0_loaded = advice_ref01_ent.load(advice_ref01_match_dt0, None)
         assert advice_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _advice_basic_setup(extra):
         "ADVICESLIP_TEST_ADVICE_ENTID": idmap,
         "ADVICESLIP_TEST_LIVE": "FALSE",
         "ADVICESLIP_TEST_EXPLAIN": "FALSE",
-        "ADVICESLIP_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _advice_basic_setup(extra):
     if env.get("ADVICESLIP_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ADVICESLIP_APIKEY"),
             },
             extra or {},
         ])

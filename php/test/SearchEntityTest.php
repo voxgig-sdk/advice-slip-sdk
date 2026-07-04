@@ -49,8 +49,7 @@ class SearchEntityTest extends TestCase
         // LOAD
         $search_ref01_ent = $client->Search(null);
         $search_ref01_match_dt0 = [];
-        [$search_ref01_data_dt0_loaded, $err] = $search_ref01_ent->load($search_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $search_ref01_data_dt0_loaded = $search_ref01_ent->load($search_ref01_match_dt0, null);
         $this->assertNotNull($search_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function search_basic_setup($extra)
         "ADVICESLIP_TEST_SEARCH_ENTID" => $idmap,
         "ADVICESLIP_TEST_LIVE" => "FALSE",
         "ADVICESLIP_TEST_EXPLAIN" => "FALSE",
-        "ADVICESLIP_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function search_basic_setup($extra)
     if ($env["ADVICESLIP_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ADVICESLIP_APIKEY"],
             ],
             $extra ?? [],
         ]);

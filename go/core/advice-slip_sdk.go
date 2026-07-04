@@ -245,11 +245,17 @@ func (sdk *AdviceSlipSDK) Direct(fetchargs map[string]any) (map[string]any, erro
 }
 
 
+// Advice returns a Advice entity bound to this client.
+// Idiomatic usage: client.Advice(nil).List(nil, nil) or
+// client.Advice(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AdviceSlipSDK) Advice(data map[string]any) AdviceSlipEntity {
 	return NewAdviceEntityFunc(sdk, data)
 }
 
 
+// Search returns a Search entity bound to this client.
+// Idiomatic usage: client.Search(nil).List(nil, nil) or
+// client.Search(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AdviceSlipSDK) Search(data map[string]any) AdviceSlipEntity {
 	return NewSearchEntityFunc(sdk, data)
 }

@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Advice Slip API"
         url: "https://api.adviceslip.com/"

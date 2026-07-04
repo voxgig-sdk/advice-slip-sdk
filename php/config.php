@@ -20,9 +20,6 @@ class AdviceSlipConfig
             ],
             "options" => [
                 "base" => "https://api.adviceslip.com",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -59,6 +56,7 @@ class AdviceSlipConfig
                         'orig' => 'slip_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [
@@ -174,6 +172,7 @@ class AdviceSlipConfig
                         'orig' => 'query',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [
