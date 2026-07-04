@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:advice():list() / client:advice():load({ id = ... })
-function AdviceSlipSDK:advice(data)
+-- Idiomatic facade: client:Advice():list() / client:Advice():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AdviceSlipSDK:Advice(data)
   local EntityMod = require("entity.advice_entity")
   if data == nil then
     if self._advice == nil then
@@ -256,15 +257,10 @@ function AdviceSlipSDK:advice(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:advice() instead.
-function AdviceSlipSDK:Advice(data)
-  local EntityMod = require("entity.advice_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
-function AdviceSlipSDK:search(data)
+-- Idiomatic facade: client:Search():list() / client:Search():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AdviceSlipSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   if data == nil then
     if self._search == nil then
@@ -272,12 +268,6 @@ function AdviceSlipSDK:search(data)
     end
     return self._search
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:search() instead.
-function AdviceSlipSDK:Search(data)
-  local EntityMod = require("entity.search_entity")
   return EntityMod.new(self, data)
 end
 
