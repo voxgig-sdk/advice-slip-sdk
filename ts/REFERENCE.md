@@ -128,7 +128,7 @@ const advice = client.Advice()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `slip` | ``$OBJECT`` | Yes |  |
+| `slip` | `Record<string, any>` | Yes |  |
 
 ### Operations
 
@@ -137,7 +137,7 @@ const advice = client.Advice()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Advice().load({ id: 'advice_id' })
+const result = await client.Advice().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -178,9 +178,9 @@ const search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `query` | ``$STRING`` | No |  |
-| `slip` | ``$ARRAY`` | Yes |  |
-| `total_result` | ``$STRING`` | Yes |  |
+| `query` | `string` | No |  |
+| `slip` | `any[]` | Yes |  |
+| `total_result` | `string` | Yes |  |
 
 ### Operations
 

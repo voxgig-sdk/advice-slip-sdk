@@ -101,7 +101,7 @@ advice := client.Advice(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `slip` | ``$OBJECT`` | Yes |  |
+| `slip` | `map[string]any` | Yes |  |
 
 ### Operations
 
@@ -147,9 +147,9 @@ search := client.Search(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `query` | ``$STRING`` | No |  |
-| `slip` | ``$ARRAY`` | Yes |  |
-| `total_result` | ``$STRING`` | Yes |  |
+| `query` | `string` | No |  |
+| `slip` | `[]any` | Yes |  |
+| `total_result` | `string` | Yes |  |
 
 ### Operations
 
