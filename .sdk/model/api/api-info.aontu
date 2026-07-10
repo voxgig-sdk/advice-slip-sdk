@@ -16,9 +16,9 @@ main: {
           url: "https://api.adviceslip.com"
         }
       ]
+      summary: "The Advice Slip JSON API is provided for free."
       title: "Advice Slip API"
       version: "1.0.0"
+      website: "https://adviceslip.com"
     }
   }
-}
-

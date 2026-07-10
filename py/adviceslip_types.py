@@ -20,7 +20,7 @@ class Advice(TypedDict):
     slip: dict
 
 
-class AdviceLoadMatch(TypedDict):
+class AdviceLoadMatch(TypedDict, total=False):
     id: int
 
 
