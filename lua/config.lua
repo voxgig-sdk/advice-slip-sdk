@@ -1,4 +1,4 @@
--- ProjectName SDK configuration
+-- AdviceSlip SDK configuration
 
 local function make_config()
   return {
